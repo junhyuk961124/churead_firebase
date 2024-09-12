@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import InputFiled from '../components/InputFiled';
 import LoginButton from '../components/LoginButton';
 // import DarkMode from '../components/DarkMode';
@@ -16,6 +16,10 @@ const Login = () => {
   const darkbutton333 = () => {
     setdark333(!dark333);
     console.log('🚀 ~ darkbutton333 ~ dark333:', dark333);
+  };
+  const history = useNavigate();
+  const goToHome = () => {
+    history('/');
   };
 
   // view
@@ -41,7 +45,7 @@ const Login = () => {
             />
           </div>
 
-          <LoginButton buttonName="로그인" />
+          <LoginButton buttonName="로그인" buttonActive={goToHome} />
           {/* <Link to={'/'}>로그인</Link> */}
           <div className="flex justify-center">
             <p className="pr-1">계정이 없으신가요?</p>
