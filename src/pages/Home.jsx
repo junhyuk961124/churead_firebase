@@ -7,7 +7,9 @@ const Home = () => {
   // View
   return (
     <div>
-      <Link to={'/login'}>로그인하기</Link>
+      <Link to={'/login'} className="text-red-600">
+        로그인하기
+      </Link>
     </div>
   );
 };
