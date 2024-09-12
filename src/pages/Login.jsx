@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import InputFiled from '../components/InputFiled';
 import LoginButton from '../components/LoginButton';
-import DarkMode from '../components/DarkMode';
+// import DarkMode from '../components/DarkMode';
+import DarkMode222 from '../components/DarkMode222';
 // import { isButtonElement } from 'react-router-dom/dist/dom';
 
 const Login = () => {
   // Logic
-  const darkMode = () => {
-    const html = document.querySelector('html');
-    html.classList.toggle('dark');
+  // const darkMode = () => {
+  //   const html = document.querySelector('html');
+  //   html.classList.toggle('dark');
+  // };
+  const [dark333, setdark333] = useState(false);
+  const darkbutton333 = () => {
+    setdark333(!dark333);
+    console.log('🚀 ~ darkbutton333 ~ dark333:', dark333);
   };
 
   // view
   return (
-    <div class="bg-white dark:bg-gray-900 dark:text-white">
-      <DarkMode buttonName="🌚" buttonActive={darkMode} />
+    <div
+      className={`${
+        dark333 ? 'bg-white' : 'dark dark:bg-gray-900 dark:text-white'
+      }`}
+    >
+      <DarkMode222 buttonName="🌚" darkbutton222={darkbutton333} />
       <div className="flex justify-center p-16 my-auto ">
         <div className="flex justify-center items-center flex-col">
           <img src="./images/logo 1.svg" className="mx-auto h-36 w-auto" />
