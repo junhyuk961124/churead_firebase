@@ -17,7 +17,7 @@ const SignIn = () => {
   // View
   return (
     <div>
-      <div className="flex justify-center p-16 my-auto ">
+      <div className="flex justify-center p-16 my-auto h-[100vh] ">
         <div className="flex justify-center items-center flex-col">
           <img src="./images/logo 1.svg" className="mx-auto h-36 w-auto" />
           <h4 className="mt-10 text-center text-2xl font-bold leading-3 tracking-tight text-gray-900 dark:text-white">

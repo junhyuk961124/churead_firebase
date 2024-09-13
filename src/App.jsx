@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import DarkMode222 from './components/DarkMode222';
 import { useState } from 'react';
 import SignIn from './pages/SignIn';
+import Post from './pages/Post';
 
 function App() {
   const [dark333, setdark333] = useState(false);
@@ -24,8 +25,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/post" element={<Post />} />
           </Routes>
           <DarkMode222
             buttonName="🌚"

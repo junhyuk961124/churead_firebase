@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeItem = () => {
   return (
@@ -10,8 +11,12 @@ const HomeItem = () => {
           <div className="flex justify-between pr-2">
             <h4>Albert Einstein</h4>
             <div className="flex justify-end">
-              <img src="./images\fix.svg" className="size-min mr-3 " />
-              <img src="./images\trash.svg" className="size-min" />
+              <Link to={'post'}>
+                <img src="./images\fix.svg" className="size-min mr-3 " />
+              </Link>
+              <Link to={''}>
+                <img src="./images\trash.svg" className="size-min" />
+              </Link>
             </div>
           </div>
           <p className="text-left">
