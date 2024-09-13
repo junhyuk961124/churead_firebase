@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import InputFiled from '../components/InputFiled';
 import LoginButton from '../components/LoginButton';
-// import DarkMode from '../components/DarkMode';
-// import { isButtonElement } from 'react-router-dom/dist/dom';
 
-const Login = () => {
+const SignIn = () => {
   // Logic
-  // const darkMode = () => {
-  //   const html = document.querySelector('html');
-  //   html.classList.toggle('dark');
-  // };
-
   const history = useNavigate();
   const goToHome = () => {
     history('/');
@@ -21,7 +14,7 @@ const Login = () => {
     window.location.href = 'https://www.naver.com';
   };
 
-  // view
+  // View
   return (
     <div>
       <div className="flex justify-center p-16 my-auto ">
@@ -30,7 +23,8 @@ const Login = () => {
           <h4 className="mt-10 text-center text-2xl font-bold leading-3 tracking-tight text-gray-900 dark:text-white">
             Churead에서 소통해보세요
           </h4>
-          <div className="m-10">
+          <div className="m-10 mb-2">
+            <InputFiled inputName="name" type="text" inputText="Name" />
             <InputFiled inputName="email" type="email" inputText="Email" />
             <InputFiled
               inputName="password"
@@ -39,12 +33,16 @@ const Login = () => {
             />
           </div>
 
-          <LoginButton buttonName="로그인" buttonActive={goToHome} />
+          <LoginButton
+            buttonName="Creat Account"
+            buttonActive={goToHome}
+            buttonClass="mt-0"
+          />
           {/* <Link to={'/'}>로그인</Link> */}
           <div className="flex justify-center">
-            <p className="pr-1">계정이 없으신가요?</p>
-            <Link to={'/signin'} className="pl-1">
-              가입하기
+            <p className="pr-1">계정이 있으신가요?</p>
+            <Link to={'/login'} className="pl-1">
+              로그인
             </Link>
           </div>
 
@@ -56,4 +54,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;
