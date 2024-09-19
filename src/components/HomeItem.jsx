@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BsPencil } from 'react-icons/bs';
+import { BsPencilFill } from 'react-icons/bs';
+import { HiOutlineTrash } from 'react-icons/hi2';
+import { HiTrash } from 'react-icons/hi2';
 
 const HomeItem = () => {
   return (
@@ -11,11 +15,16 @@ const HomeItem = () => {
           <div className="flex justify-between pr-2">
             <h4>Albert Einstein</h4>
             <div className="flex justify-end">
-              <Link to={'post'}>
-                <img src="./images\fix.svg" className="size-min mr-3 " />
+              <Link to={'/post'}>
+                <div className="pr-2">
+                  {' '}
+                  <BsPencil size={'16px'} />
+                </div>
+                {/* <BsPencilFill /> */}
               </Link>
-              <Link to={''}>
-                <img src="./images\trash.svg" className="size-min" />
+              <Link to={'/'}>
+                <HiOutlineTrash size={'18px'} />
+                {/* <HiTrash /> */}
               </Link>
             </div>
           </div>
