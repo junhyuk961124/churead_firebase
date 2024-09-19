@@ -1,8 +1,8 @@
 import React from 'react';
 
 const LoginButton = ({ buttonName, buttonActive, buttonClass }) => {
-  const buttonClick = () => {
-    buttonActive();
+  const buttonClick = (event) => {
+    buttonActive(event);
   };
 
   return (

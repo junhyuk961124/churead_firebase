@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import InputFiled from '../components/InputFiled';
 import LoginButton from '../components/LoginButton';
@@ -17,6 +17,52 @@ const Login = () => {
     history('/');
   };
 
+  // 데이터전달
+  // 자식으로부터 받은inputValue의 값을 state에 저장
+  /**
+   * 1. handleInputChange함수에서 data라는 inputValue와 field라는 해당 input의 필드값을 받아온다
+   * 2. 새로운 변수 선언하여 inputValue의 값을 넣어준다.(rorcpgudxo)
+   * 3. setFormData를 이용해서 새로운 변수의 값으로 변경한다.
+   */
+
+  // const [formData, setFormData] = useState({ email: '', password: '' });
+
+  // const handleInputChange = (data, inputName) => {
+  //   const newFormData = { ...formData, [inputName]: data };
+  //   setFormData(newFormData);
+  // };
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleInputChange = (data, inputName) => {
+    // if (inputName === 'email') {
+    //   setEmail(data);
+    // } else {
+    //   setPassword(data);
+    // }
+
+    const NewFormData = { ...formData, [inputName]: data };
+    setFormData(NewFormData);
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log('🚀 ~ handleLogin ~ handleLogin:', handleLogin);
+  };
+
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
+
+  // useEffect(() => {
+  //   console.log('🚀 ~ handleInputChange ~ newFormData:', formData);
+  // }, [formData]);
+
   const naver = () => {
     window.location.href = 'https://www.naver.com';
   };
@@ -30,16 +76,22 @@ const Login = () => {
           <h4 className="mt-10 text-center text-2xl font-bold leading-3 tracking-tight text-gray-900 dark:text-white">
             Churead에서 소통해보세요
           </h4>
-          <div className="m-10">
-            <InputFiled inputName="email" type="email" inputText="Email" />
+          <form id="login-form" className="m-10">
+            <InputFiled
+              inputName="email"
+              type="email"
+              inputText="Email"
+              onChange={handleInputChange}
+            />
             <InputFiled
               inputName="password"
               type="password"
               inputText="Password"
+              onChange={handleInputChange}
             />
-          </div>
+          </form>
 
-          <LoginButton buttonName="로그인" buttonActive={goToHome} />
+          <LoginButton buttonName="로그인" buttonActive={handleLogin} />
           {/* <Link to={'/'}>로그인</Link> */}
           <div className="flex justify-center">
             <p className="pr-1">계정이 없으신가요?</p>
