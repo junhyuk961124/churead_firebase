@@ -36,7 +36,7 @@ const Post = () => {
         <h3>누구에게나 답글 및 인용 허용</h3>
         <LoginButton
           buttonName={'게시'}
-          buttonClass={'dark:bg-white dark:text-indigo-900 w-16 ml-auto'}
+          buttonClass={'dark:bg-white dark:text-indigo-900 w-14 ml-auto'}
           buttonActive={postit}
         />
       </div>
