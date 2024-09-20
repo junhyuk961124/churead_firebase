@@ -1,18 +1,31 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import DarkMode222 from './components/DarkMode222';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SignIn from './pages/SignIn';
 import Post from './pages/Post';
 import Profile from './pages/Profile';
 
 function App() {
+  const [churead, setChuread] = useState('');
   const [dark333, setdark333] = useState(false);
   const darkbutton333 = () => {
     setdark333(!dark333);
     console.log('🚀 ~ darkbutton333 ~ dark333:', dark333);
   };
+
+  const handlePost = (value) => {
+    setChuread(value);
+  };
+
+  useEffect(() => {
+    console.log('초기화');
+  }, []);
+
+  useEffect(() => {
+    console.log('churead', churead);
+  }, [churead]);
 
   return (
     <div className="flex justify-center content-center">
@@ -26,10 +39,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home churead={churead} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signin" element={<SignIn />} />
-            <Route path="/post" element={<Post />} />
+            <Route path="/post" element={<Post onPost={handlePost} />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
           <DarkMode222

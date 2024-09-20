@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import ImageLink from '../components/ImageLink';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LoginButton from '../components/LoginButton';
 
-const Post = () => {
+const Post = ({ onPost }) => {
+  const navigate = useNavigate();
+  const [value, setvalue] = useState('');
   const postit = () => {
-    console.log('게시하기');
+    onPost(value);
+    navigate('/');
   };
+
+  const handleChange = (event) => {
+    const { value } = event.target;
+    setvalue(value);
+  };
+
   return (
     <div className="w-[100vw] h-[100vh]  max-w-[400px]">
       <div className="">
@@ -25,9 +34,11 @@ const Post = () => {
         <div className="block content-center w-full">
           <h4 className="font-bold text-left">Albert Einstein</h4>
           <textarea
+            value={value}
             className="caret-gray-700  dark:text-slate-900 p-1 w-full"
             rows={5}
             placeholder="문구를 작성하세요"
+            onChange={handleChange}
           />
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 
 const LoginButton = ({ buttonName, buttonActive, buttonClass }) => {
   const buttonClick = (event) => {
+    event.preventDefault(); // 폼 제출시 새로고침 방지 메소드
     buttonActive(event);
   };
 
