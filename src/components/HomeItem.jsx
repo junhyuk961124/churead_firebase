@@ -4,7 +4,7 @@ import { BsPencil } from 'react-icons/bs';
 import { HiOutlineTrash } from 'react-icons/hi2';
 // import { HiTrash } from 'react-icons/hi2';
 
-const HomeItem = ({ onDelete, data }) => {
+const HomeItem = ({ data, onDelete, onEdit }) => {
   const handleDelete = () => {
     console.log('🚀 ~ handleDelete ~ data:', data);
     const ok = window.confirm('정말 삭제하시겠습니까?');
@@ -13,10 +13,12 @@ const HomeItem = ({ onDelete, data }) => {
     console.log('item_delete');
   };
 
+  const handleEdit = () => {
+    onEdit(data);
+  };
+
   const handleClick = (type) => {
-    if (type === 'edit') return;
-    handleDelete();
-    console.log('click', type);
+    type === 'edit' ? handleEdit() : handleDelete();
   };
 
   const iconList = [

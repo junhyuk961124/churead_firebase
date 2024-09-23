@@ -4,21 +4,33 @@ import Header from '../components/Header';
 import HomeItem from '../components/HomeItem';
 
 import Nav from '../components/Nav';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { chureadState, postListState } from '../data/atom';
+import { useNavigate } from 'react-router-dom';
+import { seletedItemState } from '../data/atom';
 
 const Home = () => {
   //Logic
 
   const churead = useRecoilValue(chureadState);
+  const setSeletedItemState = useSetRecoilState(seletedItemState);
   /**
    * 피드 데이터셋
    */
+
   const [postList, setPostList] = useRecoilState(postListState);
+  const navigate = useNavigate();
+
   const handleDelete = (data) => {
     console.log('🚀 ~ handleDelete ~ data:', data);
     const newPostList = postList.filter((item) => item.id !== data.id);
     setPostList(newPostList);
+  };
+
+  const handleEdit = (data) => {
+    console.log('🚀 ~ handleEdit ~ data:', data);
+    setSeletedItemState(data);
+    navigate('/edit');
   };
 
   /**
@@ -77,7 +89,7 @@ const Home = () => {
       <ul>
         {postList.map((post) => (
           <li key={post.id}>
-            <HomeItem data={post} onDelete={handleDelete} />
+            <HomeItem data={post} onDelete={handleDelete} onEdit={handleEdit} />
           </li>
         ))}
       </ul>

@@ -6,11 +6,20 @@ export const textState = atom({
   default: 'junhyuk', // default value (aka initial value)
 });
 
+//
 export const postListState = atom({
   key: 'postListState', // unique ID (with respect to other atoms/selectors)
   default: postList, // default value (aka initial value)
 });
+
+//
 export const chureadState = atom({
   key: 'chureadState', // unique ID (with respect to other atoms/selectors)
   default: '', // default value (aka initial value)
+});
+
+//edit 클릭 시 정보 수정가능
+export const seletedItemState = atom({
+  key: 'seletiedItemState', // unique ID (with respect to other atoms/selectors)
+  default: null, // default value (aka initial value)
 });
