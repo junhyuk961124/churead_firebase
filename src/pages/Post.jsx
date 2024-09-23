@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import ImageLink from '../components/ImageLink';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginButton from '../components/LoginButton';
+import { useSetRecoilState } from 'recoil';
+import { chureadState } from '../data/atom';
 
-const Post = ({ onPost }) => {
+const Post = () => {
   const navigate = useNavigate();
+
+  const setChuread = useSetRecoilState(chureadState);
   const [value, setvalue] = useState('');
   const postit = () => {
-    onPost(value);
     navigate('/');
   };
 
   const handleChange = (event) => {
     const { value } = event.target;
     setvalue(value);
+    setChuread(value);
   };
 
   return (
@@ -30,7 +32,7 @@ const Post = ({ onPost }) => {
       </div>
       {/* // 중간 바디 부분 */}
       <div className="flex p-5 items-start">
-        <img src="./images\profile-image.svg" className="pr-3 " />
+        <img src="./images\profile-image.svg" className="pr-3 " alt="profile" />
         <div className="block content-center w-full">
           <h4 className="font-bold text-left">Albert Einstein</h4>
           <textarea

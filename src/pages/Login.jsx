@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import InputFiled from '../components/InputFiled';
 import LoginButton from '../components/LoginButton';
 // import DarkMode from '../components/DarkMode';
@@ -12,10 +12,10 @@ const Login = () => {
   //   html.classList.toggle('dark');
   // };
 
-  const history = useNavigate();
-  const goToHome = () => {
-    history('/');
-  };
+  // const history = useNavigate();
+  // const goToHome = () => {
+  //   history('/');
+  // };
 
   // 데이터전달
   // 자식으로부터 받은inputValue의 값을 state에 저장
@@ -36,8 +36,8 @@ const Login = () => {
     email: '',
     password: '',
   });
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
   const handleInputChange = (data, inputName) => {
     // if (inputName === 'email') {
@@ -72,7 +72,12 @@ const Login = () => {
     <div>
       <div className="flex justify-center p-16 my-auto h-[100vh] ">
         <div className="flex justify-center items-center flex-col">
-          <img src="./images/logo 1.svg" className="mx-auto h-36 w-auto" />
+          <img
+            src="./images/logo 1.svg"
+            className="mx-auto h-36 w-auto
+          "
+            alt="chuzrit"
+          />
           <h4 className="mt-10 text-center text-2xl font-bold leading-3 tracking-tight text-gray-900 dark:text-white">
             Churead에서 소통해보세요
           </h4>
