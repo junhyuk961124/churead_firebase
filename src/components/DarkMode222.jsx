@@ -7,11 +7,11 @@ const DarkMode222 = ({ darkbutton222, buttonName }) => {
   return (
     <button
       type="button"
-      name={buttonName}
+      // name={buttonName}
       onClick={aaaaa}
       className="absolute top-0 right-5 p-5"
     >
-      ❤️
+      {buttonName}
     </button>
   );
 };

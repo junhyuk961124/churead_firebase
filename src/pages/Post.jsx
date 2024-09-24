@@ -1,23 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginButton from '../components/LoginButton';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { chureadState } from '../data/atom';
 
 const Post = () => {
   const navigate = useNavigate();
 
-  const setChuread = useSetRecoilState(chureadState);
+  const textareaRef = useRef(null);
+
+  const [churead, setChuread] = useRecoilState(chureadState);
   const [value, setvalue] = useState('');
   const postit = () => {
+    const resultChuread = churead.trim();
+
+    if (!resultChuread) {
+      alert('츄레드를 입력해주세요');
+      return;
+    }
+
     navigate('/');
   };
 
   const handleChange = (event) => {
     const { value } = event.target;
+    // 1.텍스트에서 불필요한 공백 제거하기
+    //2. 제거한 텍스트를 기준을 빈 스트링인지 체크하기
+    //3. 빈 스트링인 경우 알람창에 "츄레드를 입력해주세요"라고 메시지 뜨기
+    // 4.빈 스트링 아닌경우 기존처럼 아이템 추가하기
+
     setvalue(value);
     setChuread(value);
   };
+
+  useEffect(() => {
+    // textareaRef.current && <textareaRef className="current focus"></textareaRef>;
+    const length = value.length;
+    textareaRef.current && textareaRef.current.focus();
+    textareaRef.current &&
+      textareaRef.current.setSelectionRange(length, length);
+    console.log('🚀 ~ useEffect ~ textareaRef:', textareaRef);
+  }, [value.length]);
 
   return (
     <div className="w-[100vw] h-[100vh]  max-w-[400px]">
@@ -48,6 +71,7 @@ const Post = () => {
             rows={5}
             placeholder="문구를 작성하세요"
             onChange={handleChange}
+            ref={textareaRef}
           />
         </div>
       </div>

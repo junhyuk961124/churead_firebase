@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import InputFiled from '../components/InputFiled';
 import LoginButton from '../components/LoginButton';
 
-const SignIn = () => {
+const SignUp = () => {
   // Logic
   const history = useNavigate();
   const goToHome = () => {
@@ -58,4 +58,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

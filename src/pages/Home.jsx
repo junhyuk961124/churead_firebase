@@ -29,6 +29,7 @@ const Home = () => {
 
   const handleEdit = (data) => {
     console.log('🚀 ~ handleEdit ~ data:', data);
+
     setSeletedItemState(data);
     navigate('/edit');
   };
@@ -81,10 +82,27 @@ const Home = () => {
     console.log('postList', postList);
   }, [postList]);
 
+  // api
+  const getData = async () => {
+    // fetch('https://jsonplaceholder.typicode.com/todos')
+    //   .then((response) => {
+    //     console.log("🚀 ~ getData ~ response:", response)
+    //     return response.json()
+    //   })
+    //   .then((json) => console.log(json));
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+    const data = await response.json();
+    console.log('🚀 ~ getData ~ response:', response.json);
+    console.log('🚀 ~ getData ~ data:', data);
+  };
+
   // View
   return (
     // 전체틀
     <div className="p-3 pt-20 ">
+      <button type="button" onClick={getData}>
+        데이터가져오기
+      </button>
       <Header />
       <ul>
         {postList.map((post) => (

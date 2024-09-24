@@ -3,11 +3,11 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import DarkMode222 from './components/DarkMode222';
 import { useEffect, useState } from 'react';
-import SignIn from './pages/SignIn';
 import Post from './pages/Post';
 import Profile from './pages/Profile';
 import { RecoilRoot } from 'recoil';
 import Edit from './pages/Edit';
+import SignUp from './pages/SignUp';
 
 function App() {
   const [dark333, setdark333] = useState(false);
@@ -35,7 +35,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
               <Route path="/post" element={<Post />} />
               <Route path="/edit" element={<Edit />} />
               <Route path="/profile" element={<Profile />} />

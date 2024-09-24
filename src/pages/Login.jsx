@@ -100,7 +100,7 @@ const Login = () => {
           {/* <Link to={'/'}>로그인</Link> */}
           <div className="flex justify-center">
             <p className="pr-1">계정이 없으신가요?</p>
-            <Link to={'/signin'} className="pl-1">
+            <Link to={'/signup'} className="pl-1">
               가입하기
             </Link>
           </div>

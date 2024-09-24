@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginButton from '../components/LoginButton';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { postListState, seletedItemState } from '../data/atom';
 
 const Edit = () => {
-  const [postList, setPostList] = useRecoilState(postListState);
-
   const navigate = useNavigate();
+
+  const textareaRef = useRef(null);
+
+  const [postList, setPostList] = useRecoilState(postListState);
 
   const selectedItem = useRecoilValue(seletedItemState);
 
@@ -29,6 +31,14 @@ const Edit = () => {
     const { value } = event.target;
     setvalue(value);
   };
+
+  // useEffect
+  useEffect(() => {
+    const length = value.length;
+    textareaRef.current && textareaRef.current.focus();
+    textareaRef.current &&
+      textareaRef.current.setSelectionRange(length, length);
+  }, [value.length]);
 
   return (
     <div className="w-[100vw] h-[100vh]  max-w-[400px]">
@@ -58,6 +68,7 @@ const Edit = () => {
             rows={5}
             placeholder="문구를 작성하세요"
             onChange={handleChange}
+            ref={textareaRef}
           />
         </div>
       </div>
